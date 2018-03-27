@@ -16,14 +16,6 @@ function getAnswer(){
   }    
 
   $("#result").text('Thinking...')
-
-  axios.get('https://yesno.wtf/api')
-  .then(function (response) {
-    $("#result").text(response.data.answer)
-  })
-  .catch(function (error) {
-    $("#result").text('Error! Could not reach the API. ' + error)
-  })
 }
 
 

@@ -1,4 +1,4 @@
-<%= form_tag("/search", method: "get") do %>
+<%= form_tag("/pages/search", method: "get", remote: true) do %>
   <%= label_tag(:q, "Please ask a yes or no question. 
   For example: Is the sky blue?") %> <br>
   <%= text_field_tag(:q) %>
