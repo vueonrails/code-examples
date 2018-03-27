@@ -38,7 +38,7 @@
 
         this.answer = 'Thinking...'
         var vm = this
-        axios.get('https://yesno.wtf/api')
+        axios.get('/pages/search.json')
           .then(function (response) {
             vm.answer = _.capitalize(response.data.answer)
           })

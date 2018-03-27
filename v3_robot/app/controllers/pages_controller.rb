@@ -61,6 +61,11 @@ class PagesController < ApplicationController
     end
   end
 
+  def search
+    answer = ((rand(10)%2) == 1) ? "Yes" : "No"
+    render json: { answer: answer }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page
