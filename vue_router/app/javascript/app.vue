@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -10,6 +10,9 @@ export default {
     return {
       message: "Hello Vue!"
     }
+  },
+  created: function () {
+    this.$router.push('/posts')
   }
 }
 </script>
