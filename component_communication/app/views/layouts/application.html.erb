@@ -12,5 +12,7 @@
 
   <body>
     <%= yield %>
+    <div id="flashData" data-notice="<%= flash.notice %>"></div>
+    <div id="flash"></div>
   </body>
 </html>
