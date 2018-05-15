@@ -9,15 +9,19 @@ import Vue from 'vue'
 import App from '../app.vue'
 import Flash from '../parts/flash/flash.vue'
 
-document.addEventListener('DOMContentLoaded', () => {
-  const flash = new Vue(Flash)
-  flash.$mount('#flash')
+var flashVM, appVM
 
-  const app = new Vue({
+document.addEventListener('DOMContentLoaded', () => {
+  flashVM = new Vue(Flash)
+  flashVM.$mount('#flash')
+  // makes the instance globally available
+  window.flashVM = flashVM
+
+  appVM = new Vue({
+    el: '#app',
     render: h => h(App)
   })
-  app.$mount('#app')
-  console.log(app)
+  console.log(appVM)
 })
 
 

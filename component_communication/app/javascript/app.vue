@@ -2,11 +2,12 @@
   <div id="app">
     <p>{{ message }}</p>
     <button @click="notice()">Notice</button>
+    <button @click="warn()">Warn</button>
+    <button @click="error()">Error</button>
   </div>
 </template>
 
 <script>
-import Flash from 'parts/flash/flash.vue'
 export default {
   data: function () {
     return {
@@ -15,7 +16,13 @@ export default {
   },
   methods: {
     notice: function() {
-      Flash.methods.notice('Hello from Vue')
+      flashVM.notice('Hello from Vue')
+    },
+    warn: function() {
+      flashVM.warn('Warn from Vue')
+    },
+    error: function() {
+      flashVM.error('Error from Vue')
     }
   }
 }
