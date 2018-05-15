@@ -2,12 +2,14 @@
   <div id="app">
     <p>{{ message }}</p>
     <button @click="notice()">Notice</button>
+    <flash ref="flash"></flash>
   </div>
 </template>
 
 <script>
 import Flash from 'parts/flash/flash.vue'
 export default {
+  components: {Flash},
   data: function () {
     return {
       message: "Hello Vue!"
@@ -15,7 +17,8 @@ export default {
   },
   methods: {
     notice: function() {
-      Flash.methods.notice('Hello from Vue')
+      this.$refs.flash.notice('hi')
+      // Flash.methods.notice('Hello from Vue')
     }
   }
 }

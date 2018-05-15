@@ -7,11 +7,11 @@
 
 import Vue from 'vue'
 import App from '../app.vue'
-import Flash from '../parts/flash/flash.vue'
+// import Flash from '../parts/flash/flash.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const flash = new Vue(Flash)
-  flash.$mount('#flash')
+  // const flash = new Vue(Flash)
+  // flash.$mount('#flash')
 
   const app = new Vue({
     render: h => h(App)
