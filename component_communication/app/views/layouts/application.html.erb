@@ -13,11 +13,11 @@
 
   <body>
     <%= yield %>
-    <div id="flashData"
-         data-notice="<%= flash.notice %>"
-         data-error="<%= flash[:error] %>"
-         data-warning="<%= flash[:warning] %>">
-    </div>
+    <%= content_tag :div, nil, id: "flashData", data: {
+        notice: flash[:notice],
+        error: flash[:error],
+        warning: flash[:warning]
+    } %>
     <div id="flash"></div>
   </body>
 </html>

@@ -9,7 +9,7 @@ export default {
     var flashFromServer = document.getElementById('flashData');
     this.notice(flashFromServer.dataset.notice);
     this.error(flashFromServer.dataset.error);
-    this.warn(flashFromServer.dataset.error);
+    this.warn(flashFromServer.dataset.warning);
   },
   methods: {
     notice(msg) {
