@@ -1,0 +1,19 @@
+one:
+  game: one
+  player: one
+  piece: X
+
+two:
+  game: one
+  player: two
+  piece: O
+
+three:
+  game: two
+  player: one
+  piece: X
+
+four:
+  game: two
+  player: two
+  piece: O
