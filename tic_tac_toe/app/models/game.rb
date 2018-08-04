@@ -58,7 +58,7 @@ class Game < ApplicationRecord
     result = nil
     WINNING_POSITIONS.each do |position|
       values_at = board.values_at(*position)
-      Rails.logger.debug "values_at #{values_at}"
+      # Rails.logger.debug "values_at #{values_at}"
       if values_at.count('X') == 3
         result = x
         break
