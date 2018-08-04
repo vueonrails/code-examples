@@ -7,15 +7,22 @@ export default {
   },
   created: function() {
     this.getGame(this.game_id)
+    this.getPlayer('any')
   },
   computed: {
     ...mapState('games', {
       game: state => state.current
+    }),
+    ...mapState('players', {
+      currentPlayer: state => state.current
     })
   },
   methods: {
     ...mapActions('games', {
       getGame: 'get'
+    }),
+    ...mapActions('players', {
+      getPlayer: 'get'
     })
   }
 };

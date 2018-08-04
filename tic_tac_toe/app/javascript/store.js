@@ -6,6 +6,7 @@ import VuexRailsPlugin from 'vuex-rails-plugin/src/VuexRailsPlugin'
 export default new Vuex.Store({
   plugins: [
     VuexRailsPlugin('games'),
-    VuexRailsPlugin('games_players')
+    VuexRailsPlugin('games_players'),
+    VuexRailsPlugin('players')
   ]
 })

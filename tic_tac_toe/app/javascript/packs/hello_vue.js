@@ -8,6 +8,7 @@
 import Vue from 'vue/dist/vue.esm'
 import Games from '../parts/games/games.vue'
 import Game from '../parts/game/game.vue'
+import Name from '../parts/name/name.vue'
 import TurbolinksAdapter from 'vue-turbolinks'
 import store from '../store'
 Vue.use(TurbolinksAdapter)
@@ -15,4 +16,5 @@ Vue.use(TurbolinksAdapter)
 document.addEventListener('turbolinks:load', () => {
   new Vue(Games).$mount('#games')
   new Vue({store, el: '#game', components: { Game }})
+  new Vue(Name).$mount('#name')
 })

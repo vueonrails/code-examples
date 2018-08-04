@@ -4,7 +4,7 @@ class GamesPlayersController < ApplicationController
   end
 
   def create
-    @games_player = current_player.game_players.new(games_player_params)
+    @games_player = current_player.games_players.new(games_player_params)
     if @games_player.save
       render :show, status: :ok, location: @games_player
     else
