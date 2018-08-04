@@ -10,10 +10,10 @@
     </thead>
     <tbody>
       <tr v-for="game in games">
-        <td scope="row"><board :board="game.board" :width="50"></board></td>
+        <td scope="row"><board :game="game" :width="50" :myPiece="null"></board></td>
         <td>{{ game.status }}</td>
-        <td>X - {{ game.x ? game.x.name : '' }} / O - {{ game.o ? game.o.name : '' }}</td>
-        <td><button class="btn btn-outline-dark" @click="visit(game)">Play</button></td>
+        <td>X: {{ game.x ? game.x.name : '' }}, O: {{ game.o ? game.o.name : '' }}</td>
+        <td><button class="btn btn-outline-dark" @click="visit(game)">Go to Board</button></td>
       </tr>
     </tbody>
     <tfoot>

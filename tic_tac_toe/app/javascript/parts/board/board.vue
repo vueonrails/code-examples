@@ -1,5 +1,5 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="xMidYMid meet" viewBox="0 0 600 600" :width="width === 100 ? '100%' : width" :height="width === 100 ? 'auto' : width" @mouseleave="currentPosition = null">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="xMidYMid meet" viewBox="0 0 600 600" :width="width === 100 ? '100%' : width" :height="width === 100 ? 'auto' : width" @mouseleave="currentPosition = null" v-if="game && game.board">
     <defs>
       <path d="M400 400L600 400L600 600L400 600L400 400Z" id="f2lQx2Xy77" />
       <clipPath id="cliph1LChlITv">
@@ -85,26 +85,26 @@
     </defs>
     <g>
       <!-- Squares -->
-      <g v-for="(squareIds, position) in squareSvgIds" @click="currentPosition = position">
+      <g v-for="(squareIds, position) in squareSvgIds">
         <use :xlink:href="squareIds[0]" opacity="1" fill="#ffffff" fill-opacity="1"/>
         <g :clip-path="'url(' + squareIds[1] + ')'">
           <use :xlink:href="squareIds[0]" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="12" stroke-opacity="1" />
         </g>
       </g>
       <!-- Os -->
-      <g v-for="(svgIds, position) in oSvgIds" v-if="board[position] === 'O'">
+      <g v-for="(svgIds, position) in oSvgIds" v-if="game.board[position] === 'O' || (game.board[position] === '' && currentPosition === position && myPiece === 'O')">
         <use :xlink:href="svgIds[0]" opacity="1" fill="#ffffff" fill-opacity="1" />
         <g :clip-path="'url(' + svgIds[1] + ')'">
-          <use :xlink:href="svgIds[0]" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="70" stroke-opacity="1" />
+          <use :xlink:href="svgIds[0]" opacity="1" fill-opacity="0" :stroke="game.board[position] === '' ? '#999999' : '#000000'" stroke-width="70" stroke-opacity="1" />
         </g>
       </g>
       <!-- Xs -->
-      <g v-for="(svgId, position) in xSvgIds" v-if="board[position] === 'X' || (board[position] === '' && currentPosition === position)">
-        <use :xlink:href="svgId" opacity="1" :fill="board[position] === '' ? '#999999' : '#000000'" fill-opacity="1" />
+      <g v-for="(svgId, position) in xSvgIds" v-if="game.board[position] === 'X' || (game.board[position] === '' && currentPosition === position && myPiece === 'X')">
+        <use :xlink:href="svgId" opacity="1" :fill="game.board[position] === '' ? '#999999' : '#000000'" fill-opacity="1" />
       </g>
       <!-- invisible elements to handle mouse enter events -->
       <template v-for="position in [0,1,2,3,4,5,6,7,8]">
-        <rect :x="(position % 3) * 200" :y="position <= 2 ? 0 : (position <= 5 ? 200 : 400)" width="200" height="200" v-on:mouseenter="currentPosition = position" fill="transparent"/>
+        <rect :x="(position % 3) * 200" :y="position <= 2 ? 0 : (position <= 5 ? 200 : 400)" width="200" height="200" v-on:mouseenter="currentPosition = position" fill="transparent" @click="play(position)"/>
       </template>
     </g>
   </svg>

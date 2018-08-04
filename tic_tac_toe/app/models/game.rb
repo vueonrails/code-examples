@@ -32,7 +32,10 @@ class Game < ApplicationRecord
 
   # TODO create custom validation
   def place(piece, position)
-    if board[position].present? || position < 0 || position > 8
+    if status == 'over'
+      errors.add(:board, "Game is Over")
+      false
+    elsif board[position].present? || position < 0 || position > 8
       errors.add(:board, "Invalid board position")
       false
     elsif piece != turn

@@ -12,9 +12,18 @@ class GamesPlayersController < ApplicationController
     end
   end
 
+  def update
+    @games_player = current_player.games_players.find(params[:id])
+    if @games_player.move(params[:position])
+      render :show, status: :ok, location: @games_player
+    else
+      render json: { errors: @games_player.game.errors }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def games_player_params
-    params.require(:games_player).permit(:piece, :game_id)
+    params.require(:games_player).permit(:id, :piece, :game_id)
   end
 end

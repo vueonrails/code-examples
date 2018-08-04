@@ -1,3 +1,4 @@
+import { mapActions, mapState } from 'vuex'
 export default {
   data: function() {
     return {
@@ -21,12 +22,35 @@ export default {
     }
   },
   props: {
-    board: Array,
-    width: Number
+    game: Object,
+    width: Number,
+    myPiece: String
+  },
+  computed: {
+    ...mapState('games_players', {
+      error: state => state.error.errors ? state.error.errors : state.error
+    })
   },
   methods: {
-    setPosition: function(position) {
-      this.currentPosition = position
+    ...mapActions('games', {
+      getGame: 'get'
+    }),
+    ...mapActions('games_players', {
+      updateGamesPlayer: 'update'
+    }),
+    play(position) {
+      const vm = this
+      if (this.game.board[position] != '') { return }
+      const gp = this.game.games_players.find(gPlayer => gPlayer.piece === this.myPiece)
+      this.updateGamesPlayer({id: gp.id, game_id: this.game.id, position: position})
+        .then(res => {
+          // TODO this won't be needed when ActionCable is implemented
+          this.getGame(this.game.id)
+        })
+        .catch(err => {
+          console.error(err)
+          alert(vm.error ? vm.error.board : 'Something Went Wrong')
+        })
     }
   }
 };
