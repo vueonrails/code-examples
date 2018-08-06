@@ -11,6 +11,8 @@ import Game from '../parts/game/game.vue'
 import Name from '../parts/name/name.vue'
 import TurbolinksAdapter from 'vue-turbolinks'
 import store from '../store'
+import ActionCable from 'actioncable'
+Vue.prototype.$cable = ActionCable.createConsumer()
 Vue.use(TurbolinksAdapter)
 
 document.addEventListener('turbolinks:load', () => {

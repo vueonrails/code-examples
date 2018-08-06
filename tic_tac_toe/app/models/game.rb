@@ -2,22 +2,23 @@ class Game < ApplicationRecord
   has_many :games_players
   has_many :players, through: :games_players
   before_create :set_board
+  after_commit :broadcast
   serialize :board, JSON
 
   WINNING_POSITIONS = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
-    [0, 3, 6], [1, 4, 5], [2, 5, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
     [0, 4, 8], [2, 4, 6]
   ].freeze
 
   def x
-    pg = games_players.find_by_piece('X')
-    pg.nil? ? nil : pg.player
+    gp = games_players.find_by_piece('X')
+    gp.nil? ? nil : gp.player
   end
 
   def o
-    pg = games_players.find_by_piece('O')
-    pg.nil? ? nil : pg.player
+    gp = games_players.find_by_piece('O')
+    gp.nil? ? nil : gp.player
   end
 
   def turn
@@ -33,7 +34,7 @@ class Game < ApplicationRecord
   # TODO create custom validation
   def place(piece, position)
     if status == 'over'
-      errors.add(:board, "Game is Over")
+      errors.add(:board, "Game is over")
       false
     elsif board[position].present? || position < 0 || position > 8
       errors.add(:board, "Invalid board position")
@@ -48,7 +49,9 @@ class Game < ApplicationRecord
   end
 
   def status
-    if winner.present?
+    if tied?
+      "tied"
+    elsif winner.present?
       "over"
     elsif x.present? && o.present?
       "playing"
@@ -77,5 +80,14 @@ class Game < ApplicationRecord
 
   def set_board
     self.board = [''] * 9
+  end
+
+  def tied?
+    winner.nil? && !board.include?('')
+  end
+
+  def broadcast
+    game_json = GamesController.render 'games/show.json', assigns: { game: self }
+    ActionCable.server.broadcast("game_channel_#{id}", game_json)
   end
 end

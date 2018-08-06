@@ -57,6 +57,10 @@ acorn@^5.0.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.1.tgz#f095829297706a7c9776958c0afc8930a9b9d9d8"
 
+actioncable@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/actioncable/-/actioncable-5.2.0.tgz#97a4e06681c749a8af86e1ead8487bf5e87b59e4"
+
 ajv-keywords@^3.1.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.2.0.tgz#e86b819c602cf8821ad637413698f1dec021847a"
@@ -5896,9 +5900,9 @@ vue@^2.5.16:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 
-vuex-rails-plugin@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vuex-rails-plugin/-/vuex-rails-plugin-1.0.1.tgz#aaad920302f3c239dee5573659e160e3c413a2c7"
+vuex-rails-plugin@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vuex-rails-plugin/-/vuex-rails-plugin-1.0.2.tgz#f2fc2f5fb1baa2f829ca0dd39cebe2cb3671d83d"
   dependencies:
     axios "^0.18.0"
     vue "^2.5.16"

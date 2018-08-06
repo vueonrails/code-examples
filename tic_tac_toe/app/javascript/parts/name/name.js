@@ -33,7 +33,7 @@ export default {
           vm.get(playerId)
         })
         .catch(err => {
-          alert(vm.error)
+          console.error(vm.error)
         })
     }
   }

@@ -44,8 +44,7 @@ export default {
       const gp = this.game.games_players.find(gPlayer => gPlayer.piece === this.myPiece)
       this.updateGamesPlayer({id: gp.id, game_id: this.game.id, position: position})
         .then(res => {
-          // TODO this won't be needed when ActionCable is implemented
-          this.getGame(this.game.id)
+          // this.getGame(vm.game.id)
         })
         .catch(err => {
           console.error(err)

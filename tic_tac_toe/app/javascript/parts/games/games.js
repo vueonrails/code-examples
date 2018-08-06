@@ -1,9 +1,17 @@
 import { mapState, mapActions } from 'vuex'
 import store from '../../store'
 import Board from '../board/board.vue'
+import GameRow from './game-row'
 export default {
   store,
-  components: { Board },
+  components: { GameRow },
+  data: function() {
+    return {
+      page: 1,
+      limit: 10,
+      anyMore: true
+    }
+  },
   created() {
     this.getGames()
   },
@@ -24,8 +32,20 @@ export default {
         })
         .catch(err => { console.error(err) })
     },
-    visit(game) {
-      Turbolinks.visit(`/games/${game.id}`)
+    loadMore() {
+      const currentCount = this.games.length
+      this.limit += 10
+      const vm = this
+      this.getGames({page: this.page, limit: this.limit})
+        .then(res => {
+          const newCount = this.games.length
+          if (newCount === currentCount) {
+            vm.anyMore = false
+          }
+        })
+        .catch(err => {
+          console.error(err)
+        })
     }
   }
 }

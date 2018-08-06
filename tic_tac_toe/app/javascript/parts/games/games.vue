@@ -1,25 +1,26 @@
 <template>
-  <table class="table table-striped">
+  <table class="table table-responsive">
     <thead>
       <tr>
         <th scope="col">Board</th>
-        <th scope="col">Status</th>
-        <th scope="col">Players</th>
-        <th scope="col"></th>
+        <th>Status</th>
+        <th>Players</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="game in games">
-        <td scope="row"><board :game="game" :width="50" :myPiece="null"></board></td>
-        <td>{{ game.status }}</td>
-        <td>X: {{ game.x ? game.x.name : '' }}, O: {{ game.o ? game.o.name : '' }}</td>
-        <td><button class="btn btn-outline-dark" @click="visit(game)">Go to Board</button></td>
+      <template v-for="game in games">
+        <game-row :game="game"></game-row>
+      </template>
+      <tr>
+        <td colspan="2"><button class="btn btn-outline-dark" @click="loadMore()" :disabled="!anyMore">{{ anyMore ? 'Load More' : '...No More'}}</button></td>
+        <td></td>
+        <td></td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
-        <td scope="row"><button class="btn btn-outline-dark" @click="newGame()">New Game</button></td>
-        <td></td>
+        <td colspan="2"><button class="btn btn-outline-dark" @click="newGame()">New Game</button></td>
         <td></td>
         <td></td>
       </tr>

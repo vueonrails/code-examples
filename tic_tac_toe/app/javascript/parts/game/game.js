@@ -1,6 +1,11 @@
 import Board from '../board/board'
 import { mapState, mapActions } from 'vuex'
 export default {
+  data: function() {
+    return {
+      channel: null
+    }
+  },
   components: { Board },
   props: {
     game_id: Number
@@ -8,6 +13,14 @@ export default {
   created: function() {
     this.getGame(this.game_id)
     this.getPlayer('any')
+    const vm = this
+    this.channel = this.$cable.subscriptions.create({channel: 'GameChannel', game_id: this.game_id}, {
+      received: function(data) {
+        console.debug('data maessage from game channel => ', data)
+        const item = JSON.parse(data)
+        vm.$store.commit('games/UPDATE', { item })
+      }
+    })
   },
   computed: {
     ...mapState('games', {
@@ -50,5 +63,8 @@ export default {
     myPiece() {
       return this.playingAs('X') ? 'X' : (this.playingAs('O') ? 'O' : null)
     }
+  },
+  destroyed() {
+    this.$cable.subscriptions.remove(this.channel)
   }
 };
