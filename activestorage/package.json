@@ -1,0 +1,7 @@
+{
+  "name": "activestorage",
+  "private": true,
+  "dependencies": {
+    "activestorage": "^5.2.1"
+  }
+}

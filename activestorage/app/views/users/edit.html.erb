@@ -1,0 +1,6 @@
+<%= form_for @user do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.file_field :avatar, direct_upload: true %>
+  <%= f.submit %>
+<% end %>
