@@ -1,6 +1,5 @@
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import store from '../../store'
-import Board from '../board/board.vue'
 import GameRow from './game-row'
 export default {
   store,
