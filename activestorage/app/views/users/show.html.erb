@@ -1,0 +1,8 @@
+<div class="card" style="width: 100px;">
+  <div class="card-img-top">
+    <%= image_tag(@user.avatar.variant(crop: @user.avatar_crop, resize: '100x100')) %>
+  </div>
+  <div class="card-body">
+    <div class="card-title"><h3><%= @user.name %></h3></div>
+  </div>
+</div>

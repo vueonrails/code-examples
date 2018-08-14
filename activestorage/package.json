@@ -1,7 +1,15 @@
 {
-  "name": "activestorage",
+  "name": "actioncable",
   "private": true,
   "dependencies": {
-    "activestorage": "^5.2.1"
+    "@rails/webpacker": "3.5",
+    "activestorage": "^5.2.0",
+    "vue": "^2.5.17",
+    "vue-loader": "14.2.2",
+    "vue-template-compiler": "^2.5.17",
+    "vuex-rails-plugin": "^1.0.2"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
   }
 }
