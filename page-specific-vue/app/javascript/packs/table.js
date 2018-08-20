@@ -1,11 +1,9 @@
-import Vue from 'vue'
+import Vue from 'vue/dist/vue.esm'
 import App from '../parts/table/table.vue'
-// import VueGoodTablePlugin from 'vue-good-table';
-// import 'vue-good-table/dist/vue-good-table.css'
+import TurbolinksAdapter from 'vue-turbolinks'
+Vue.use(TurbolinksAdapter)
 
-// Vue.use(VueGoodTablePlugin);
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   if(isView('pages#second')){
     document.body.appendChild(document.createElement('hello'))
     const app = new Vue({
