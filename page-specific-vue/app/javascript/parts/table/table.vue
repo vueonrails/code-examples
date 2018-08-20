@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
-    <button @click="click">toggle</button>
+    <br>
+    <vue-good-table
+      :columns="columns"
+      :rows="rows"/>
   </div>
 </template>
 
