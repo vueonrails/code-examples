@@ -93,14 +93,14 @@
       </g>
       <!-- Os -->
       <g v-for="(svgIds, position) in oSvgIds" v-if="game.board[position] === 'O' || (game.board[position] === '' && currentPosition === position && myPiece === 'O')">
-        <use :xlink:href="svgIds[0]" opacity="1" fill="#ffffff" fill-opacity="1" />
+        <use :xlink:href="svgIds[0]" opacity="1" fill="#ffffff" fill-opacity="1" :id="'O' + position"/>
         <g :clip-path="'url(' + svgIds[1] + ')'">
           <use :xlink:href="svgIds[0]" opacity="1" fill-opacity="0" :stroke="game.board[position] === '' ? '#999999' : '#000000'" stroke-width="70" stroke-opacity="1" />
         </g>
       </g>
       <!-- Xs -->
       <g v-for="(svgId, position) in xSvgIds" v-if="game.board[position] === 'X' || (game.board[position] === '' && currentPosition === position && myPiece === 'X')">
-        <use :xlink:href="svgId" opacity="1" :fill="game.board[position] === '' ? '#999999' : '#000000'" fill-opacity="1" />
+        <use :xlink:href="svgId" opacity="1" :fill="game.board[position] === '' ? '#999999' : '#000000'" fill-opacity="1" :id="'X' + position"/>
       </g>
       <!-- invisible elements to handle mouse enter events -->
       <template v-for="position in [0,1,2,3,4,5,6,7,8]">
