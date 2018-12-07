@@ -2,6 +2,7 @@
   <div id="app">
     <p>{{ message }}</p>
     <button @click="notice()">Notice</button>
+    <button @click="success()">Success</button>
     <button @click="warn()">Warn</button>
     <button @click="error()">Error</button>
   </div>
@@ -17,6 +18,9 @@ export default {
   methods: {
     notice: function() {
       flashVM.notice('Hello from Vue')
+    },
+    success: function() {
+      flashVM.success('Success from Vue')
     },
     warn: function() {
       flashVM.warn('Warn from Vue')

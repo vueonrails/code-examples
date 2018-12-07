@@ -17,6 +17,10 @@
   background-color: #62c6ff;
 }
 
+.toast.success {
+  background-color: green;
+}
+
 .toast.warning {
   background-color: orange;
 }
