@@ -1,0 +1,30 @@
+#flash {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 200px;
+}
+
+.toast {
+  padding: 5px;
+  margin: 5px;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.toast.notice {
+  background-color: #62c6ff;
+}
+
+.toast.success {
+  background-color: green;
+}
+
+.toast.warning {
+  background-color: orange;
+}
+
+.toast.error {
+  background-color: red;
+}
