@@ -42,6 +42,7 @@ export default {
       const vm = this
       if (this.game.board[position] != '') { return }
       const gp = this.game.games_players.find(gPlayer => gPlayer.piece === this.myPiece)
+      console.debug(gp)
       this.updateGamesPlayer({id: gp.id, game_id: this.game.id, position: position})
         .then(res => {
           // this.getGame(vm.game.id)
