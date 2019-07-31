@@ -1,0 +1,15 @@
+{
+  "name": "page-specific-vue",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "vue": "^2.5.17",
+    "vue-good-table": "^2.13.0",
+    "vue-loader": "14.2.2",
+    "vue-tabs-component": "^1.4.0",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
+}
